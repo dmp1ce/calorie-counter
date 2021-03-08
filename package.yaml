@@ -1,0 +1,56 @@
+name:                calorie-counter
+version:             0.1.0.0
+github:              "dmp1ce/calorie-counter"
+license:             PublicDomain
+author:              "David Parrish"
+maintainer:          "daveparrish@tutanota.com"
+copyright:           "2021 Author name here"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+synopsis:            Count up calories for food
+category:            Utility
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/dmp1ce/calorie-counter#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- dhall
+- text
+- optparse-applicative
+
+default-extensions:
+  - OverloadedStrings
+  - DeriveGeneric
+
+library:
+  source-dirs: src
+  ghc-options: -Wall -Werror -O2
+
+executables:
+  calorie-counter-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - calorie-counter
+
+tests:
+  calorie-counter-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - calorie-counter

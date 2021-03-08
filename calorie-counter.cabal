@@ -1,0 +1,84 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 9923cc4262cd733f1af636982256200703f69c888ea58c97cfbc9f9bbd225314
+
+name:           calorie-counter
+version:        0.1.0.0
+synopsis:       Count up calories for food
+description:    Please see the README on GitHub at <https://github.com/dmp1ce/calorie-counter#readme>
+category:       Utility
+homepage:       https://github.com/dmp1ce/calorie-counter#readme
+bug-reports:    https://github.com/dmp1ce/calorie-counter/issues
+author:         David Parrish
+maintainer:     daveparrish@tutanota.com
+copyright:      2021 Author name here
+license:        PublicDomain
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/dmp1ce/calorie-counter
+
+library
+  exposed-modules:
+      CalorieCounter
+      StdInParser
+  other-modules:
+      Paths_calorie_counter
+  hs-source-dirs:
+      src
+  default-extensions:
+      OverloadedStrings
+      DeriveGeneric
+  ghc-options: -Wall -Werror -O2
+  build-depends:
+      base >=4.7 && <5
+    , dhall
+    , optparse-applicative
+    , text
+  default-language: Haskell2010
+
+executable calorie-counter-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_calorie_counter
+  hs-source-dirs:
+      app
+  default-extensions:
+      OverloadedStrings
+      DeriveGeneric
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , calorie-counter
+    , dhall
+    , optparse-applicative
+    , text
+  default-language: Haskell2010
+
+test-suite calorie-counter-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_calorie_counter
+  hs-source-dirs:
+      test
+  default-extensions:
+      OverloadedStrings
+      DeriveGeneric
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , calorie-counter
+    , dhall
+    , optparse-applicative
+    , text
+  default-language: Haskell2010
